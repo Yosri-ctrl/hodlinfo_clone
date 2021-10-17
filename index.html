@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+	<script>
+		const ul = document.getElementById('container');
+		const url = 'http://localhost:8800/';
+
+		fetch(url, { mode: "cors" })
+			.then((resp) => resp.json())
+			.then(function (data) {
+				let authors = data.results;
+				return authors.map(function (author) {
+					let td1 = document.createElement('td');
+					let td2 = document.createElement('td');
+					let td3 = document.createElement('td');
+					td1.innerHTML = `${author.name}`;
+					td2.innerHTML = `${author.buy}`;
+					td3.innerHTML = `${author.sell}`;
+					ul.appendChild(td1);
+					ul.appendChild(td2);
+					ul.appendChild(td3);
+				})
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	</script>
+	<table class="container">
+		<!-- <tr>
+			<th>#</th>
+			<th>name</th>
+			<th>Last</th>
+			<th>Buy/Sell Price</th>
+			<th>Volume</th>
+			<th>Base Unit</th>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>BTS</td>	
+			<td>12</td>
+			<td>213</td>
+			<td>321</td>
+			<td>bts</td>
+		</tr> -->
+	</table>
+</body>
+
+</html>
